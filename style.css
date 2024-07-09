@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, #ff48ac, #ff0c92, #c1006a);
+    font-family:"Nunito", calibri, sans-serif;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.text {
+    position: relative;
+    font-size: clamp(1rem, 20vw, 10rem);
+    font-weight: bold;
+    transform: rotateX(40deg) rotateZ(-20deg);
+    text-align: center;
+    line-height: 0.9;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    perspective-origin: center top;
+    /* Lets Do few Animations */
+    animation: rotate 6s ease-in-out forwards;
+}
+
+.layer {
+    position: absolute;
+    color: #ccc;
+    transform: translateZ(calc(var(--i) * -1px));
+    animation: showLayers 6s ease-in-out forwards;
+
+    &::after {
+        content: 'Now You Don`t have to struggle with 3D Text Anymore!';
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+    }
+
+    &:first-child {
+        color: #fff;
+        text-shadow: 0 0 4px #fff;
+    }
+
+    &:last-child {
+        text-shadow: -4px 4px 4px #0008;
+    }
+    
+}
+
+@keyframes rotate {
+    25%, 100% {
+        transform: translateY(0) rotateX(40deg) rotateZ(-20deg);
+    }
+    50%, 75% {
+        transform: translateY(-220px) rotateX(65deg) rotateZ(-20deg);
+    }
+}
+
+@keyframes showLayers {
+    25%, 100% {
+        transform: translateZ(calc(var(--i) * -1px));
+    }
+    50%, 75% {
+        transform: translateZ(calc(var(--i) * -70px));
+    }
+}
